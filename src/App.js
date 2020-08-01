@@ -1,12 +1,18 @@
 import React from 'react';
-import './App.css';
+import './css/app.scss';
 
-function App() {
-  return (
-    <div className="App">
-      Siema
-    </div>
-  );
+export default class App extends React.Component {
+
+    constructor(props){
+        super(props);
+    }
+
+
+    render(){
+        return (
+            <div className="appContainer">
+                Witam w pOteZNeJ aplikacji
+            </div>
+        );
+    }
 }
-
-export default App;
