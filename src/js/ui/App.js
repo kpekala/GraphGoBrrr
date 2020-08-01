@@ -1,0 +1,25 @@
+import React from 'react';
+import '../../css/app.scss';
+import GameManager from "../GameManager";
+
+export default class App extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.gameManager = new GameManager();
+    }
+
+    componentDidMount() {
+        this.gameManager.start();
+    }
+
+    render(){
+        return (
+            <div className="appContainer">
+                <div id="gameContainer">
+
+                </div>
+            </div>
+        );
+    }
+}
