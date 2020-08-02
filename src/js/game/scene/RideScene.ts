@@ -20,10 +20,11 @@ export default class RideScene extends Phaser.Scene{
         loadImages(this);
     }
     create(){
+        this.axesManager.addAxes();
+
         this.graphObject = new GraphObject(this, new Graph(gameSession.mathExpr));
         this.graphObject.show();
 
-        this.axesManager.addAxes();
 
         this.cameras.main.setBackgroundColor('#f9f7f7')
     }

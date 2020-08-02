@@ -1,5 +1,6 @@
 import RideScene from "../../scene/RideScene";
 import config from './graph_config';
+import {GAME_HEIGHT} from "../../../config";
 import {Scene} from "phaser";
 export default class AxesManager{
 
@@ -20,8 +21,7 @@ export default class AxesManager{
     }
 
     addVerticalAxis(){
-        let trueXPos = config.axisPosition.x * config.adjustX;
-        this.scene.add.line(0,0,trueXPos ,0,trueXPos, config.weirdEnd, config.axisColor);
+        this.scene.add.line(0,0,config.axisPosition.x ,0,config.axisPosition.x, config.weirdEnd, config.axisColor);
     }
 
     addNumbers(){
@@ -31,14 +31,17 @@ export default class AxesManager{
 
     private addHorizontalNumbers() {
         let yPos = config.axisPosition.y;
-        for(let i=0; i<100; i++){
-            let text = this.scene.add.text((i + config.axisPosition.x) * config.adjustX, yPos,i.toString());
+        for(let i=1; i<100; i++){
+            let text = this.scene.add.text(i * config.adjustX + config.axisPosition.x, yPos,i.toString());
             text.setColor('#000000');
-            text.setBackgroundColor('#f9f7f7');
         }
     }
 
     private addVerticalNumbers() {
-
+        let xPos = config.axisPosition.x;
+        for(let i=0; i<20; i++){
+            let text = this.scene.add.text(xPos + 5, (10-i)* config.adjustY + config.axisPosition.y ,(i-10).toString());
+            text.setColor('#000000');
+        }
     }
 }
