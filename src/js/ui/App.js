@@ -9,7 +9,7 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
-        this.gameManager.start('x^2');
+        this.gameManager.start('-5 * sqrt x');
     }
 
     render(){
