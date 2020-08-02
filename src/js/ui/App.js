@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../css/app.scss';
-import GameManager from "../GameManager";
-
+import GameManager from "../game/GameManager";
 export default class App extends React.Component {
 
     constructor(props){
@@ -10,7 +9,7 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
-        this.gameManager.start();
+        this.gameManager.start('x^2');
     }
 
     render(){
