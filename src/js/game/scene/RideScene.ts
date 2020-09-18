@@ -22,26 +22,16 @@ export default class RideScene extends Phaser.Scene{
         loadImages(this);
     }
     create(){
+        this.cameras.main.setBackgroundColor('#f9f7f7')
         this.axesManager.addAxes();
 
         this.graphObject = new GraphContainer(this, new Graph(gameSession.mathExpr));
         this.graphObject.show();
 
-        this.cameras.main.setBackgroundColor('#f9f7f7')
-
-        this.createTestObject();
-
-        this.physics.add.collider(this.graphObject,this.testCar,this.collideCallback);
+        this.matter.add.rectangle(180,100,100,100);
     }
 
-    private createTestObject(){
-        this.testCar = new TestCar(this,100,100,'car');
-    }
     update(time: number, delta: number) {
 
-    }
-
-    private collideCallback(gameObject1: any, gameObject2: any) {
-        console.log("collision");
     }
 }

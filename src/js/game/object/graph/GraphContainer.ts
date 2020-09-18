@@ -5,18 +5,16 @@ import TestCar from "../vehicle/TestCar";
 
 //GraphObject serves as a container for drawn parts of graph
 
-export default class GraphContainer extends Phaser.Physics.Arcade.StaticGroup{
+export default class GraphContainer{
 
     graph: Graph;
     scene: Scene;
+    lines: Array<any>;
 
     constructor(scene: Phaser.Scene, graph: Graph){
-        super(scene.physics.world,scene);
-
         this.graph = graph;
         this.scene = scene;
-
-        scene.add.existing(this);
+        this.lines = new Array<any>();
     }
 
     show(){
@@ -28,13 +26,15 @@ export default class GraphContainer extends Phaser.Physics.Arcade.StaticGroup{
             let y1 = this.graph.getValue(x1);
             let y2 = this.graph.getValue(x2);
 
-            let screenX1 = config.axisPosition.x + x1 * config.adjustX
-            let screenX2 = config.axisPosition.x + x2 * config.adjustX
-            let screenY1 = config.axisPosition.y - y1 * config.adjustY
-            let screenY2 = config.axisPosition.y - y2 * config.adjustY
+            let screenX1 = config.axisPosition.x + x1 * config.adjustX;
+            let screenX2 = config.axisPosition.x + x2 * config.adjustX;
+            let screenY1 = config.axisPosition.y - y1 * config.adjustY;
+            let screenY2 = config.axisPosition.y - y2 * config.adjustY;
             //let test = new Phaser.Physics.Arcade.Image(this.scene,screenX1,screenY1,'car');
-            let line = new Phaser.GameObjects.Line(this.scene,0,0,screenX1,screenY1,screenX2,screenY2,0x112d4e);
-            this.add(line, true);
+            //let line = new Phaser.GameObjects.Line(this.scene,0,0,screenX1,screenY1,screenX2,screenY2,0x112d4e);
+            this.scene.matter.add.rectangle(screenX1, screenY1,screenX2 - screenX1,1,
+                {render:{fillColor: 0xa84232}, isStatic: true});
+            //this.add(line, true);
         }
     }
 }
