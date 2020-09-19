@@ -2,6 +2,8 @@ import Phaser, {Scene} from 'phaser';
 import Graph from "../../Graph";
 import config from './graph_config'
 import TestCar from "../vehicle/TestCar";
+import {getScreenX, getScreenY} from "./PositionConverter";
+import {lineAngle} from "../../../utils/geometry";
 
 //GraphObject serves as a container for drawn parts of graph
 
@@ -18,23 +20,22 @@ export default class GraphContainer{
     }
 
     show(){
-        for(let i=0; i<10000; i++){
-            //Creating small lines which will look globally like a graph
-            let x1: number = (i / 12);
-            let x2: number = (i+1) / 12;
+        for(let i=0; i<200; i++){
+            let x1: number = (i / 8);
+            let x2: number = (i+1) / 8;
 
             let y1 = this.graph.getValue(x1);
             let y2 = this.graph.getValue(x2);
 
-            let screenX1 = config.axisPosition.x + x1 * config.adjustX;
-            let screenX2 = config.axisPosition.x + x2 * config.adjustX;
-            let screenY1 = config.axisPosition.y - y1 * config.adjustY;
-            let screenY2 = config.axisPosition.y - y2 * config.adjustY;
-            //let test = new Phaser.Physics.Arcade.Image(this.scene,screenX1,screenY1,'car');
-            //let line = new Phaser.GameObjects.Line(this.scene,0,0,screenX1,screenY1,screenX2,screenY2,0x112d4e);
-            this.scene.matter.add.rectangle(screenX1, screenY1,screenX2 - screenX1,1,
-                {render:{fillColor: 0xa84232}, isStatic: true});
-            //this.add(line, true);
+            this.showLine(getScreenX(x1), getScreenY(y1), getScreenX(x2), getScreenY(y2));
         }
     }
+
+    showLine(x1: number, y1: number, x2: number, y2: number){
+        let lineLength = x2 - x1
+        let angle = lineAngle(x1,y1,x2,y2);
+        this.scene.matter.add.rectangle(x1 + lineLength / 2, y1,lineLength,1,
+            {render:{fillColor: 0xa84232}, isStatic: true, angle: angle});
+    }
+
 }

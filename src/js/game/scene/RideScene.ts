@@ -28,7 +28,8 @@ export default class RideScene extends Phaser.Scene{
         this.graphObject = new GraphContainer(this, new Graph(gameSession.mathExpr));
         this.graphObject.show();
 
-        this.matter.add.rectangle(180,100,100,100);
+        this.matter.add.circle(400,300,10);
+        let car = this.matter.add.car(600,300,200,50,40);
     }
 
     update(time: number, delta: number) {
