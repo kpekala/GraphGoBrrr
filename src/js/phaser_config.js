@@ -13,8 +13,9 @@ export var phaser_config = {
         height: GAME_HEIGHT
     },
     physics: {
-        default: 'arcade',
-        arcade: {
+        default: 'matter',
+        matter: {
+            gravity: { y: 1 },
             debug: true
         }
     },

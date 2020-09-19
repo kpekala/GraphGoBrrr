@@ -1,2 +1,2 @@
-export const GAME_WIDTH = 1380;
-export const GAME_HEIGHT = 780;
+export const GAME_WIDTH = 1920;
+export const GAME_HEIGHT = 1080;

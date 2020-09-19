@@ -1,14 +1,16 @@
 import Phaser from 'phaser';
 import {loadImages} from "../../utils/MediaLoader";
-import GraphObject from "../object/graph/GraphObject";
+import GraphContainer from "../object/graph/GraphContainer";
 import gameSession from "../GameSession";
 import Graph from "../Graph";
 import AxesManager from "../object/graph/AxesManager";
+import TestCar from "../object/vehicle/TestCar";
 
 export default class RideScene extends Phaser.Scene{
 
-    graphObject!: GraphObject;
+    graphObject!: GraphContainer;
     axesManager: AxesManager;
+    testCar!: TestCar;
 
     constructor(config: object) {
         super(config);
@@ -20,14 +22,16 @@ export default class RideScene extends Phaser.Scene{
         loadImages(this);
     }
     create(){
+        this.cameras.main.setBackgroundColor('#f9f7f7')
         this.axesManager.addAxes();
 
-        this.graphObject = new GraphObject(this, new Graph(gameSession.mathExpr));
+        this.graphObject = new GraphContainer(this, new Graph(gameSession.mathExpr));
         this.graphObject.show();
 
-
-        this.cameras.main.setBackgroundColor('#f9f7f7')
+        this.matter.add.circle(400,300,10);
+        let car = this.matter.add.car(600,300,200,50,40);
     }
+
     update(time: number, delta: number) {
 
     }

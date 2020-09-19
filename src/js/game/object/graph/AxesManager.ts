@@ -16,15 +16,15 @@ export default class AxesManager{
         this.addNumbers();
     }
 
-    addHorizontalAxis(){
+    private addHorizontalAxis(){
         this.scene.add.line(0,0,0,config.axisPosition.y, config.weirdEnd, config.axisPosition.y, config.axisColor);
     }
 
-    addVerticalAxis(){
+    private addVerticalAxis(){
         this.scene.add.line(0,0,config.axisPosition.x ,0,config.axisPosition.x, config.weirdEnd, config.axisColor);
     }
 
-    addNumbers(){
+    private addNumbers(){
         this.addVerticalNumbers();
         this.addHorizontalNumbers();
     }
