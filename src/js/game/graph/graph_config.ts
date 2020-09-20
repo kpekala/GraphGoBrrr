@@ -1,4 +1,4 @@
-import {GAME_WIDTH, GAME_HEIGHT} from "../../../config";
+import {GAME_WIDTH, GAME_HEIGHT} from "../../config";
 
 export default {
     lineLength: 5,

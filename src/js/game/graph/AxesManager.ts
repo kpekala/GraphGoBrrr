@@ -1,6 +1,6 @@
-import RideScene from "../../scene/RideScene";
+import RideScene from "../scene/RideScene";
 import config from './graph_config';
-import {GAME_HEIGHT} from "../../../config";
+import {GAME_HEIGHT} from "../../config";
 import {Scene} from "phaser";
 export default class AxesManager{
 

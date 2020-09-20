@@ -1,9 +1,8 @@
 import Phaser, {Scene} from 'phaser';
-import Graph from "../../Graph";
+import Graph from "../Graph";
 import config from './graph_config'
-import TestCar from "../vehicle/TestCar";
 import {getScreenX, getScreenY} from "./PositionConverter";
-import {lineAngle} from "../../../utils/geometry";
+import {lineAngle} from "../../utils/geometry";
 
 //GraphObject serves as a container for drawn parts of graph
 
