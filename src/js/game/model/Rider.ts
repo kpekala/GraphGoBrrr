@@ -6,20 +6,14 @@ export class Rider extends Phaser.Physics.Matter.Sprite{
         super(scene.matter.world,x,y,key,undefined,options);
         this.setScale(0.5, 0.5);
         scene.add.existing(this);
-        this.setMass(10);
+        this.setMass(100);
     }
 
     moveForward(delta: number){
-        let vec2 = new Phaser.Math.Vector2();
-        vec2.x = 0.05;
-        vec2.y = 0;
-        this.applyForce(vec2);
+        this.thrust(0.3);
     }
     moveBack(delta: number){
-        let vec2 = new Phaser.Math.Vector2();
-        vec2.x = -0.05;
-        vec2.y = 0;
-        this.applyForce(vec2);
+        this.thrustBack(0.1);
     }
 
 
