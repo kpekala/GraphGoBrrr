@@ -31,11 +31,15 @@ export default class RideScene extends Phaser.Scene{
         this.graphObject = new GraphContainer(this, new Graph(gameSession.mathExpr));
         this.graphObject.show();
 
-        this.rider = new Rider(this,300,200,'car');
-
+        this.setUpRider();
         this.setUpCamera();
 
         this.keysManager = new KeysManager(this);
+    }
+
+    setUpRider(){
+        let shape = this.cache.json.get('car_shape');
+        this.rider = new Rider(this,300,200,'car',{shape: shape.car});
     }
 
     setUpCamera(){
