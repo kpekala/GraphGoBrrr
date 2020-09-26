@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import {loadImages} from "../../utils/MediaLoader";
-import GraphContainer from "../graph/GraphContainer";
+import GraphManager from "../graph/GraphManager";
 import gameSession from "../GameSession";
 import Graph from "../Graph";
 import AxesManager from "../graph/AxesManager";
@@ -11,7 +11,7 @@ import {color} from "../../config";
 
 export default class RideScene extends Phaser.Scene{
 
-    graphObject!: GraphContainer;
+    graphManager!: GraphManager;
     axesManager: AxesManager;
     keysManager!: KeysManager;
     rider!: Rider;
@@ -28,8 +28,7 @@ export default class RideScene extends Phaser.Scene{
     create(){
         this.axesManager.addAxes();
 
-        this.graphObject = new GraphContainer(this, new Graph(gameSession.mathExpr));
-        this.graphObject.show();
+        this.graphManager = new GraphManager(this, new Graph(gameSession.mathExpr));
 
         this.setUpRider();
         this.setUpCamera();
@@ -54,7 +53,11 @@ export default class RideScene extends Phaser.Scene{
             this.rider.moveForward(delta);
         if (this.keysManager.isKeyDown('s'))
             this.rider.moveBack(delta);
+
+        if (this.graphManager.isUpdateNeeded(this.rider.x))
+            this.graphManager.update();
     }
+
 
 
 
