@@ -5,13 +5,15 @@ import gameSession from "../GameSession";
 import Graph from "../Graph";
 import AxesManager from "../graph/AxesManager";
 import KeysManager from "../input/KeysManager";
+import {Rider} from "../model/Rider";
+import {phaser_config} from "../../phaser_config";
 
 export default class RideScene extends Phaser.Scene{
 
     graphObject!: GraphContainer;
     axesManager: AxesManager;
     keysManager!: KeysManager;
-    car!: MatterJS.CompositeType;
+    rider!: Rider;
 
     constructor(config: object) {
         super(config);
@@ -23,30 +25,33 @@ export default class RideScene extends Phaser.Scene{
         loadImages(this);
     }
     create(){
-        this.cameras.main.setBackgroundColor('#f9f7f7')
         this.axesManager.addAxes();
 
         this.graphObject = new GraphContainer(this, new Graph(gameSession.mathExpr));
         this.graphObject.show();
 
-        this.matter.add.circle(400,300,10);
-        this.car = this.matter.add.car(600,300,110,20,20);
+        this.rider = new Rider(this,300,200,'car');
+
+        this.setUpCamera();
 
         this.keysManager = new KeysManager(this);
     }
 
-    update(time: number, delta: number) {
-        if (this.keysManager.isKeyDown('w')){
-            this.matter.body.applyForce(this.car.bodies[0],
-                {x: this.car.bodies[0].position.x, y: this.car.bodies[0].position.y},
-                {x: 0.005, y: 0});
-        }
-        if (this.keysManager.isKeyDown('s')){
-            this.matter.body.applyForce(this.car.bodies[0],
-                {x: this.car.bodies[0].position.x, y: this.car.bodies[0].position.y},
-                {x: -0.005, y: 0});
-        }
+    setUpCamera(){
+        let camera = this.cameras.main;
+        camera.setBackgroundColor('#f9f7f7');
+        camera.setBounds(0,0,phaser_config.scale.width*15, phaser_config.scale.height);
+        camera.startFollow(this.rider);
+    }
 
-}
+    update(time: number, delta: number) {
+        if (this.keysManager.isKeyDown('w'))
+            this.rider.moveForward(delta);
+        if (this.keysManager.isKeyDown('s'))
+            this.rider.moveBack(delta);
+    }
+
+
+
 
 }
