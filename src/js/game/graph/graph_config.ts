@@ -1,4 +1,4 @@
-import {GAME_WIDTH, GAME_HEIGHT} from "../../../config";
+import {GAME_WIDTH, GAME_HEIGHT, color} from "../../config";
 
 export default {
     lineLength: 5,
@@ -9,5 +9,6 @@ export default {
         y: GAME_HEIGHT / 2
     },
     weirdEnd: 1000000,
-    axisColor: 0x311d3f
+    axisColor: color.light,
+    textColor: color.light
 }

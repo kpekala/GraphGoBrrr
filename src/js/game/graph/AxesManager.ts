@@ -1,6 +1,6 @@
-import RideScene from "../../scene/RideScene";
+import RideScene from "../scene/RideScene";
 import config from './graph_config';
-import {GAME_HEIGHT} from "../../../config";
+import {color, GAME_HEIGHT} from "../../config";
 import {Scene} from "phaser";
 export default class AxesManager{
 
@@ -33,7 +33,7 @@ export default class AxesManager{
         let yPos = config.axisPosition.y;
         for(let i=1; i<100; i++){
             let text = this.scene.add.text(i * config.adjustX + config.axisPosition.x, yPos,i.toString());
-            text.setColor('#000000');
+            text.setColor(`#${config.textColor.toString(16)}`);
         }
     }
 
@@ -41,7 +41,7 @@ export default class AxesManager{
         let xPos = config.axisPosition.x;
         for(let i=0; i<20; i++){
             let text = this.scene.add.text(xPos + 5, (10-i)* config.adjustY + config.axisPosition.y ,(i-10).toString());
-            text.setColor('#000000');
+            text.setColor(`#${config.textColor.toString(16)}`);
         }
     }
 }

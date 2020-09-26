@@ -1,0 +1,48 @@
+{
+	"generator_info": "Shape definitions generated with PhysicsEditor. Visit https://www.codeandweb.com/physicseditor",
+	"car": {
+		"type": "fromPhysicsEditor",
+		"label": "car",
+		"isStatic": false,
+		"density": 0.1,
+		"restitution": 0,
+		"friction": 0.1,
+		"frictionAir": 0.01,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":5, "y":31 }, { "x":6, "y":63 }, { "x":257, "y":62 }, { "x":165, "y":20 }, { "x":89, "y":2 }, { "x":43, "y":9 } ],
+					[ { "x":260, "y":42 }, { "x":222, "y":21 }, { "x":197, "y":22 }, { "x":257, "y":62 } ],
+					[ { "x":133, "y":2 }, { "x":89, "y":2 }, { "x":165, "y":20 } ],
+					[ { "x":197, "y":22 }, { "x":165, "y":20 }, { "x":257, "y":62 } ]
+				]
+			},
+			{
+				"label": "",
+				"isSensor": false,
+				"circle": {
+					"x": 43,
+					"y": 58,
+					"radius": 24.02271554554524
+				}
+			},
+			{
+				"label": "",
+				"isSensor": false,
+				"circle": {
+					"x": 215,
+					"y": 59,
+					"radius": 23.021728866442675
+				}
+			}
+		]
+	}
+}
