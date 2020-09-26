@@ -5,6 +5,8 @@ export class Rider extends Phaser.Physics.Matter.Sprite{
     constructor(scene: Phaser.Scene, x: number, y: number, key: string) {
         super(scene.matter.world,x,y,key);
         this.setScale(0.5, 0.5);
+        scene.add.existing(this);
+        this.setMass(10);
     }
 
     moveForward(delta: number){

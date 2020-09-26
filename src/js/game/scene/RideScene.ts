@@ -7,6 +7,7 @@ import AxesManager from "../graph/AxesManager";
 import KeysManager from "../input/KeysManager";
 import {Rider} from "../model/Rider";
 import {phaser_config} from "../../phaser_config";
+import {color} from "../../config";
 
 export default class RideScene extends Phaser.Scene{
 
@@ -39,7 +40,7 @@ export default class RideScene extends Phaser.Scene{
 
     setUpCamera(){
         let camera = this.cameras.main;
-        camera.setBackgroundColor('#f9f7f7');
+        camera.setBackgroundColor(color.darker);
         camera.setBounds(0,0,phaser_config.scale.width*15, phaser_config.scale.height);
         camera.startFollow(this.rider);
     }

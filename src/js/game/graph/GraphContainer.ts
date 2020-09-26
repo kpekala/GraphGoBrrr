@@ -1,8 +1,8 @@
 import Phaser, {Scene} from 'phaser';
 import Graph from "../Graph";
-import config from './graph_config'
 import {getScreenX, getScreenY} from "./PositionConverter";
 import {lineAngle} from "../../utils/geometry";
+import {color} from "../../config";
 
 //GraphObject serves as a container for drawn parts of graph
 
@@ -34,7 +34,7 @@ export default class GraphContainer{
         let lineLength = x2 - x1
         let angle = lineAngle(x1,y1,x2,y2);
         this.scene.matter.add.rectangle(x1 + lineLength / 2, y1,lineLength,1,
-            {render:{fillColor: 0xa84232}, isStatic: true, angle: angle});
+            {render:{lineColor: color.primary}, isStatic: true, angle: angle});
     }
 
 }
