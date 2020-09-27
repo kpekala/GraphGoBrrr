@@ -1,5 +1,5 @@
 import Phaser, {Scene} from 'phaser';
-import Graph from "../Graph";
+import Graph from "./Graph";
 import {getScreenX, getScreenY} from "./PositionConverter";
 import {lineAngle} from "../../utils/geometry";
 import {color, GAME_WIDTH} from "../../config";

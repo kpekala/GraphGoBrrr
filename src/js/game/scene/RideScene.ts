@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 import {loadImages} from "../../utils/MediaLoader";
 import GraphManager from "../graph/GraphManager";
 import gameSession from "../GameSession";
-import Graph from "../Graph";
+import Graph from "../graph/Graph";
 import AxesManager from "../graph/AxesManager";
 import KeysManager from "../input/KeysManager";
 import {Rider} from "../model/Rider";
