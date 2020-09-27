@@ -15,7 +15,15 @@
 .title{
 
 }
-.functionInput{
+.inputFunction{
   @extend .baseTextInput;
   width: 200px;
+  margin-top: 24px;
 }
+
+.buttonInput{
+  @extend .baseButton;
+  width: 100px;
+  margin-top: 18px;
+}
+

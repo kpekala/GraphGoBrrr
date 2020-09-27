@@ -14,22 +14,24 @@ export default class App extends React.Component {
         }
 
         this.onGameStarted = this.onGameStarted.bind(this);
-    }
-
-    componentDidMount() {
-        this.gameManager.start('sin (x/2)');
+        this.onFunctionChange = this.onFunctionChange.bind(this);
     }
 
     getCurrentPage() {
         if (this.state.gameStarted)
             return <Game fun={this.state.fun}/>;
         else
-            return <Creator onGameStarted={this.onGameStarted}/>;
+            return <Creator fun={this.state.fun}
+                            onGameStarted={this.onGameStarted}
+                            onFunctionChange={this.onFunctionChange}/>;
 
     }
+    onFunctionChange(event){
+        this.setState({fun: event.target.value});
+    }
 
-    onGameStarted(fun){
-        this.setState({fun: fun, gameStarted: true});
+    onGameStarted(){
+        this.setState({gameStarted: true});
     }
 
     render(){

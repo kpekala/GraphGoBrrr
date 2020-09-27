@@ -1,7 +1,13 @@
 import React from 'react';
 import '../../css/creator.scss';
-import GameManager from "../game/GameManager";
-export default class Creator extends React.Component {
+
+type MyProps = {
+    fun: string
+    onGameStarted: () => void,
+    onFunctionChange: (event: any) => void
+}
+
+export default class Creator extends React.Component<MyProps,{}> {
 
     constructor(props: any){
         super(props);
@@ -10,8 +16,9 @@ export default class Creator extends React.Component {
     render(){
         return (
             <div id="creatorContainer">
-                <label className="title">Siema</label>
-                <input className="functionInput"/>
+                <label className="title">Write a function</label>
+                <input className="inputFunction" onChange={this.props.onFunctionChange}/>
+                <button className="buttonInput" onClick={this.props.onGameStarted}>Click!</button>
             </div>
         );
     }
