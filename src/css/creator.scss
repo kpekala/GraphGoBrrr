@@ -1,0 +1,21 @@
+@import './utils/colors.scss';
+@import './utils/common.scss';
+
+#creatorContainer{
+  @extend .base;
+  background-color: pink;
+  color: #112d4e;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title{
+
+}
+.functionInput{
+  @extend .baseTextInput;
+  width: 200px;
+}
