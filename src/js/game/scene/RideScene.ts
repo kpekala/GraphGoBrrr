@@ -56,10 +56,7 @@ export default class RideScene extends Phaser.Scene{
 
         if (this.graphManager.isUpdateNeeded(this.rider.x))
             this.graphManager.update();
+        if (this.axesManager.isUpdateNeeded(this.rider.x))
+            this.axesManager.updateHorizontalNumbers()
     }
-
-
-
-
-
 }

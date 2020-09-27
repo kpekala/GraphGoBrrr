@@ -33,7 +33,6 @@ export default class GraphManager{
     }
 
     update(){
-        console.log('graph update...');
         for(let i=0; i<=this.updateSize; i++){
             let x1: number = (i / 8) + this.lastXPoint;
             let x2: number = (i+1) / 8 + this.lastXPoint;

@@ -13,7 +13,7 @@ export class Rider extends Phaser.Physics.Matter.Sprite{
         this.thrust(0.3);
     }
     moveBack(delta: number){
-        this.thrustBack(0.1);
+        this.thrustBack(0.2);
     }
 
 

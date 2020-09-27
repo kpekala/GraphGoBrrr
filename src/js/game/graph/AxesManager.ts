@@ -1,10 +1,12 @@
 import RideScene from "../scene/RideScene";
 import config from './graph_config';
-import {color, GAME_HEIGHT} from "../../config";
+import {color, GAME_HEIGHT, GAME_WIDTH} from "../../config";
 import {Scene} from "phaser";
+import {getScreenX} from "./PositionConverter";
 export default class AxesManager{
-
     scene: Scene;
+    lastXPoint: number = 0;
+    updateSize: integer = 50;
 
     constructor(scene: RideScene) {
         this.scene = scene;
@@ -26,15 +28,16 @@ export default class AxesManager{
 
     private addNumbers(){
         this.addVerticalNumbers();
-        this.addHorizontalNumbers();
+        this.updateHorizontalNumbers();
     }
 
-    private addHorizontalNumbers() {
+    updateHorizontalNumbers() {
         let yPos = config.axisPosition.y;
-        for(let i=1; i<100; i++){
-            let text = this.scene.add.text(i * config.adjustX + config.axisPosition.x, yPos,i.toString());
+        for(let i=1; i<=this.updateSize; i++){
+            let text = this.scene.add.text(getScreenX(i + this.lastXPoint), yPos,(i+ this.lastXPoint).toString());
             text.setColor(`#${config.textColor.toString(16)}`);
         }
+        this.lastXPoint += this.updateSize - 1;
     }
 
     private addVerticalNumbers() {
@@ -43,5 +46,9 @@ export default class AxesManager{
             let text = this.scene.add.text(xPos + 5, (10-i)* config.adjustY + config.axisPosition.y ,(i-10).toString());
             text.setColor(`#${config.textColor.toString(16)}`);
         }
+    }
+
+    isUpdateNeeded(playerX: number){
+        return playerX + GAME_WIDTH > getScreenX(this.lastXPoint)
     }
 }
