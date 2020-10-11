@@ -21,9 +21,10 @@ export default class GraphManager{
     }
 
     showLine(x1: number, y1: number, x2: number, y2: number){
-        let lineLength = x2 - x1
+        let deltaX = x2 - x1;
         let angle = lineAngle(x1,y1,x2,y2);
-        let newLine = this.scene.matter.add.rectangle(x1 + lineLength / 2, y1,lineLength,1,
+        let lineLength = deltaX / Math.cos(angle);// Division by 0? Haha noice
+        let newLine = this.scene.matter.add.rectangle(x1 + deltaX / 2, y1,lineLength,1,
             {render:{lineColor: color.primary}, isStatic: true, angle: angle});
 
     }
